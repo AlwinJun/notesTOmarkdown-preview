@@ -7,4 +7,5 @@
 - Preview your notes into markdown
 - Sync notes with local storage
 - Use the firstline of the content as a note title
+- Display note list base on recent edits.
 - check TODOS.md for other features to be added.

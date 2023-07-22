@@ -4,7 +4,7 @@
 
 - Sync notes with local storage. (Done)
 - Add notes title (use the firstline of the content as a title). (Done)
-- Move updated notes at the top of the note list.
+- Display note list base on recent edits. (Done)
 - Delete notes.
 
 ### IF you want to add or you added another feature just add it into the list above.
