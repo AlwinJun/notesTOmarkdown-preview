@@ -1,0 +1,33 @@
+.pane {
+  overflow-y: auto;
+  /* padding: 10px; */
+}
+
+.sidebar {
+  width: 20%;
+  height: 100vh;
+}
+
+.sidebar--note {
+  /* display: flex; */
+}
+
+.sidebar--header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sidebar--header > h3 {
+  font-size: 1.75rem;
+}
+
+.new-note {
+  cursor: pointer;
+  background-color: #4a4e74;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  height: 30px;
+  width: 30px;
+}

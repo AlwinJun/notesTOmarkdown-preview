@@ -1,4 +1,5 @@
 import React from 'react';
+import './sidebar.css';
 
 export default function Sidebar(props) {
   const noteElements = props.notes.map((note, index) => (
