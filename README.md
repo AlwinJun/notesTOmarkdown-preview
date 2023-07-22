@@ -2,10 +2,11 @@
 
 ## This app currently lets you:
 
-- Create notes
-- Update notes content
-- Preview your notes into markdown
-- Sync notes with local storage
-- Use the firstline of the content as a note title
+- Create notes.
+- Update notes content.
+- Preview your notes into markdown.
+- Sync notes with local storage.
+- Use the firstline of the content as a note title.
 - Display note list base on recent edits.
+- Delete notes
 - check TODOS.md for other features to be added.
