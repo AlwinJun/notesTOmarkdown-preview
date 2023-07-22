@@ -39,8 +39,8 @@ export default function App() {
     });
   }
 
-  function deleteNote(event, noteId) {
-    event.stopPropagation();
+  function deleteNote(e, noteId) {
+    e.stopPropagation();
     setNotes((prevNote) => prevNote.filter((note) => note.id !== noteId));
   }
 
