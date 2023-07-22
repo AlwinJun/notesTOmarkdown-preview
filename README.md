@@ -5,4 +5,5 @@
 - Create notes
 - Update notes content
 - Preview your notes into markdown
+- Sync notes with local storage
 - check TODOS.md for other features to be added.
