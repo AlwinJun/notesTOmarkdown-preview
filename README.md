@@ -1,4 +1,4 @@
-# A markdown notes previewer
+# Markdown notes previewer
 
 ## This is a project at scrimba.The initial codebase are already given but theres are still features that needs to be added
 
@@ -12,3 +12,29 @@
 - Display note list base on recent edits.
 - Delete notes
 - check [TODOS.md](https://github.com/AlwinJun/notesTOmarkdown-preview/blob/main/TODOS.md) for other features to be added.
+
+## Get Started
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run in you local machine
+
+```bash
+npm run dev
+```
+
+Build and test live site
+
+```bash
+npm run build && npm run preview
+```
+
+#### `Note: Any changes must be done at src/ folder do not touch the created dist/ folder`
+
+## License
+
+Read [MIT License](https://github.com/AlwinJun/notesTOmarkdown-preview/blob/main/LICENSE) for more info.
