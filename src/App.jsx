@@ -4,13 +4,13 @@ import Editor from './components/Editor';
 import Split from 'react-split';
 import { nanoid } from 'nanoid';
 import './app.css';
-import { addDoc, deleteDoc, onSnapshot, doc } from 'firebase/firestore';
+import { addDoc, deleteDoc, onSnapshot, doc, setDoc } from 'firebase/firestore';
 import notesCollection, { db } from './firebase';
 
 export default function App() {
   const [notes, setNotes] = useState([]);
 
-  const [currentNoteId, setCurrentNoteId] = useState(notes[0]?.id || '');
+  const [currentNoteId, setCurrentNoteId] = useState('');
 
   useEffect(() => {
     // Add notes to the firesore db and notes state
@@ -26,25 +26,30 @@ export default function App() {
     return disconnect;
   }, []);
 
+  useEffect(() => {
+    // Set current id to the first note after the data from firestore is loaded
+    if (!currentNoteId) {
+      setCurrentNoteId(notes[0]?.id);
+    }
+  }, [notes]);
+
   const currentNote = notes.find((note) => note.id === currentNoteId) || notes[0];
+
+  const sortedNotes = notes.sort((a, b) => b.updatedAt - a.updatedAt);
 
   async function createNewNote() {
     const newNote = {
       body: "# Type your markdown note's title here",
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     };
     const newNoteRef = await addDoc(notesCollection, newNote);
     setCurrentNoteId(newNoteRef.id);
   }
 
-  function updateNote(text) {
-    setNotes((prevNotes) => {
-      // Move the edited note at the top on note list
-      const noteLists = [];
-      prevNotes.map((note) =>
-        note.id === currentNoteId ? noteLists.unshift({ ...note, body: text }) : noteLists.push(note)
-      );
-      return noteLists;
-    });
+  async function updateNote(text) {
+    const docRef = doc(db, 'notes', currentNoteId);
+    await setDoc(docRef, { body: text, updatedAt: Date.now() }, { merge: true });
   }
 
   async function deleteNote(e, noteId) {
@@ -58,7 +63,7 @@ export default function App() {
       {notes.length > 0 ? (
         <Split sizes={[30, 70]} direction='horizontal' className='split'>
           <Sidebar
-            notes={notes}
+            notes={sortedNotes}
             currentNote={currentNote}
             setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
