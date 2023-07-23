@@ -1,6 +1,6 @@
 # Features to add
 
-#### `NOTE: Add (done) to the feature that you accomplish.Then update the README feature list.`
+#### `NOTE: Add (done) to the feature that you accomplish.Then update the [README](https://github.com/AlwinJun/notesTOmarkdown-preview/blob/main/README.md) feature list.`
 
 - Sync notes with local storage. (Done)
 - Add notes title (use the firstline of the content as a title). (Done)

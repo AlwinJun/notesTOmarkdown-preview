@@ -1,4 +1,6 @@
-# A markdown notes previewer app project at scrimba.The initial codebase are already given but theres are still features needs to be added
+# A markdown notes previewer
+
+## This is a project at scrimba.The initial codebase are already given but theres are still features that needs to be added
 
 ## This app currently lets you:
 
@@ -9,4 +11,4 @@
 - Use the firstline of the content as a note title.
 - Display note list base on recent edits.
 - Delete notes
-- check TODOS.md for other features to be added.
+- check [TODOS.md](https://github.com/AlwinJun/notesTOmarkdown-preview/blob/main/TODOS.md) for other features to be added.
