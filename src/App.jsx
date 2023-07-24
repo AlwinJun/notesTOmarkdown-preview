@@ -9,8 +9,11 @@ import notesCollection, { db } from './firebase';
 
 export default function App() {
   const [notes, setNotes] = useState([]);
-
   const [currentNoteId, setCurrentNoteId] = useState('');
+  const [tempNoteText, setTempNoteText] = useState('');
+
+  const currentNote = notes.find((note) => note.id === currentNoteId) || notes[0];
+  const sortedNotes = notes.sort((a, b) => b.updatedAt - a.updatedAt);
 
   useEffect(() => {
     // Add notes to the firesore db and notes state
@@ -33,9 +36,22 @@ export default function App() {
     }
   }, [notes]);
 
-  const currentNote = notes.find((note) => note.id === currentNoteId) || notes[0];
+  useEffect(() => {
+    if (currentNote) {
+      setTempNoteText(currentNote.body);
+    }
+  }, [currentNote]);
 
-  const sortedNotes = notes.sort((a, b) => b.updatedAt - a.updatedAt);
+  // Debouncing updateNote in firestore
+  useEffect(() => {
+    const timeOutId = setTimeout(() => {
+      if (tempNoteText !== currentNote.body) {
+        updateNote(tempNoteText);
+      }
+    }, 500);
+
+    return () => clearTimeout(timeOutId);
+  }, [tempNoteText]);
 
   async function createNewNote() {
     const newNote = {
@@ -69,7 +85,7 @@ export default function App() {
             newNote={createNewNote}
             deleteNote={deleteNote}
           />
-          <Editor currentNote={currentNote} updateNote={updateNote} />
+          <Editor tempNoteText={tempNoteText} setTempNoteText={setTempNoteText} />
         </Split>
       ) : (
         <div className='no-notes'>

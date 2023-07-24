@@ -4,7 +4,6 @@ import './sidebar.css';
 export default function Sidebar(props) {
   const noteElements = props.notes.map((note, index) => {
     const firstLine = note.body.split('\n');
-    console.log(firstLine);
 
     return (
       <div key={note.id}>
